@@ -1,16 +1,57 @@
-# React + Vite
+# YouTube Video Background Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Инструмент для генерации видео-фона под YouTube с возможностью наложения пользовательского изображения и экспорта готового видео прямо из браузера.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Возможности
 
-## React Compiler
+* Загрузка собственного видео
+* Загрузка фонового изображения
+* Рендер видео через `<canvas>`
+* Экспорт результата в формате WebM
+* Работа полностью на стороне клиента
+* Минималистичный интерфейс
+* Отсутствие зависимости от backend и VPN
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## Используемые технологии
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React
+* HTML5 Canvas
+* MediaRecorder API
+* CSS Variables
+* requestAnimationFrame
+* Web Media Streams
+
+---
+
+## Установка и запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Открой в браузере:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Как пользоваться
+
+1. Нажми **Upload Video** и выбери видеофайл
+2. При необходимости нажми **Background** и добавь изображение
+3. Нажми **Download**
+4. Видео автоматически:
+
+   * воспроизведётся
+   * будет записано
+   * сохранится в формате `.webm`
+
+---
+
