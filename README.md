@@ -16,16 +16,6 @@
 
 ---
 
-## Используемые технологии
-
-* React
-* Canvas
-* MediaRecorder
-* CSS Variables
-* requestAnimationFrame
-
----
-
 ## Установка и запуск
 
 ```bash
@@ -51,6 +41,4 @@ http://localhost:5173
    * воспроизведётся
    * будет записано
    * сохранится в формате `.webm`
-
----
 
