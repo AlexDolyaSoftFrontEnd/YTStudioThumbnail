@@ -1,4 +1,4 @@
-# YouTube Video Background Generator
+# YouTube Video 
 
 Инструмент для генерации видео-фона под YouTube с возможностью наложения пользовательского изображения и экспорта готового видео прямо из браузера.
 
@@ -19,11 +19,10 @@
 ## Используемые технологии
 
 * React
-* HTML5 Canvas
-* MediaRecorder API
+* Canvas
+* MediaRecorder
 * CSS Variables
 * requestAnimationFrame
-* Web Media Streams
 
 ---
 
