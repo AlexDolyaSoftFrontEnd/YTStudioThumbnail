@@ -22,6 +22,9 @@ export default function VideoEditor() {
     return () => videoUrl && URL.revokeObjectURL(videoUrl);
   }, [videoUrl]);
 
+  /* ===============================
+     Canvas render loop
+  =============================== */
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
@@ -61,7 +64,10 @@ export default function VideoEditor() {
     return () => cancelAnimationFrame(raf);
   }, [draw]);
 
-  const exportVideo = () => {
+  /* ===============================
+     Export
+  =============================== */
+  const exportVideo = async () => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
     if (!canvas || !video) return;
@@ -82,11 +88,9 @@ export default function VideoEditor() {
       e.data.size && chunksRef.current.push(e.data);
 
     recorder.onstop = () => {
-      const blob = new Blob(chunksRef.current, {
-        type: "video/webm",
-      });
-
+      const blob = new Blob(chunksRef.current, { type: "video/webm" });
       const url = URL.createObjectURL(blob);
+
       const a = document.createElement("a");
       a.href = url;
       a.download = "video-export.webm";
@@ -98,7 +102,7 @@ export default function VideoEditor() {
 
     recorder.start();
     video.currentTime = 0;
-    video.play();
+    await video.play();
     setExporting(true);
 
     video.onended = () => recorder.stop();
@@ -108,7 +112,7 @@ export default function VideoEditor() {
     <div className="editor">
       <div className="editor-toolbar">
         <label className="editor-btn">
-          Upload Video
+          Upload video
           <input
             type="file"
             accept="video/*"
@@ -118,7 +122,7 @@ export default function VideoEditor() {
         </label>
 
         <label className="editor-btn">
-          Background video
+          Background image
           <input
             type="file"
             accept="image/*"
@@ -147,13 +151,17 @@ export default function VideoEditor() {
           height={HEIGHT}
           className="editor-canvas"
         />
+
+        {/* Hidden source video (NO UI DUPLICATION) */}
         <video
           ref={videoRef}
           src={videoUrl || undefined}
-          className="editor-video"
-          controls
+          muted
+          playsInline
+          style={{ display: "none" }}
         />
       </div>
     </div>
   );
 }
+

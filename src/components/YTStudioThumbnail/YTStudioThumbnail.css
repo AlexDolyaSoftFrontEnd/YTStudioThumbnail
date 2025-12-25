@@ -1,14 +1,59 @@
-body {
-  background: var(--color-bg-main);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "Segoe UI", sans-serif;
+/* ======================================================
+   CSS VARIABLES
+====================================================== */
+:root {
+  /* Colors */
+  --color-bg-main: #0b0f19;
+  --color-glass: rgba(255, 255, 255, 0.08);
+  --color-text: #f9fafb;
+  --color-border: rgba(255, 255, 255, 0.16);
+  --color-accent: #0a84ff;
+  --color-accent-dark: #0066cc;
+
+  /* Effects */
+  --blur: blur(16px);
+  --shadow-main: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+  /* Radius */
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Motion */
+  --transition: all 0.25s ease;
 }
 
-/* ROOT */
+/* ======================================================
+   GLOBAL RESET & BASE
+====================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg-main);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ======================================================
+   EDITOR ROOT
+====================================================== */
 .editor {
+  width: 100%;
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: clamp(16px, 4vw, 40px) auto;
+  padding: clamp(14px, 3vw, 20px);
   border-radius: var(--radius-xl);
   background: var(--color-glass);
   backdrop-filter: var(--blur);
@@ -16,30 +61,41 @@ body {
   color: var(--color-text);
 }
 
-/* TOOLBAR */
+/* ======================================================
+   TOOLBAR
+====================================================== */
 .editor-toolbar {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
   flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 12px);
+  margin-bottom: 16px;
 }
 
-/* BUTTONS */
+/* ======================================================
+   BUTTONS
+====================================================== */
 .editor-btn {
+  min-height: 44px;
   padding: 10px 16px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   cursor: pointer;
-  transition: var(--transition);
   font-weight: 500;
+  white-space: nowrap;
+  transition: var(--transition);
 }
 
 .editor-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.editor-btn:active {
+  transform: translateY(0);
+}
+
+/* Primary button */
 .editor-btn--primary {
   background: linear-gradient(
     180deg,
@@ -54,19 +110,67 @@ body {
   transform: translateY(-1px);
 }
 
-/* PREVIEW */
+/* Touch devices */
+@media (hover: none) {
+  .editor-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* ======================================================
+   PREVIEW
+====================================================== */
 .editor-preview {
   display: grid;
-  gap: 12px;
+  gap: clamp(8px, 2vw, 12px);
 }
 
 .editor-canvas {
   width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: var(--radius-lg);
   background: #000;
 }
 
 .editor-video {
   width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: var(--radius-lg);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+/* Mobile */
+@media (max-width: 480px) {
+  .editor {
+    border-radius: var(--radius-lg);
+  }
+
+  .editor-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .editor-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .editor {
+    max-width: 100%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1600px) {
+  .editor {
+    max-width: 1400px;
+  }
 }
