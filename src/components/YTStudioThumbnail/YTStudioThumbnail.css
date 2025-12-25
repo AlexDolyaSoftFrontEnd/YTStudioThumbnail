@@ -1,0 +1,72 @@
+body {
+  background: var(--color-bg-main);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", sans-serif;
+}
+
+/* ROOT */
+.editor {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: var(--radius-xl);
+  background: var(--color-glass);
+  backdrop-filter: var(--blur);
+  box-shadow: var(--shadow-main);
+  color: var(--color-text);
+}
+
+/* TOOLBAR */
+.editor-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.editor-btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.editor-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.editor-btn--primary {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent),
+    var(--color-accent-dark)
+  );
+  border: none;
+  box-shadow: 0 10px 30px rgba(10, 132, 255, 0.5);
+}
+
+.editor-btn--primary:hover {
+  transform: translateY(-1px);
+}
+
+/* PREVIEW */
+.editor-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.editor-canvas {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  background: #000;
+}
+
+.editor-video {
+  width: 100%;
+  border-radius: var(--radius-lg);
+}

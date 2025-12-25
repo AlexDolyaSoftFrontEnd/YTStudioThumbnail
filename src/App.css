@@ -1,0 +1,17 @@
+:root {
+  --color-bg-main: radial-gradient(circle at top, #1c1c1e, #000);
+  --color-glass: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-accent: #0a84ff;
+  --color-accent-dark: #0066ff;
+  --color-text: #ffffff;
+  --bg-canvas: #0b0b0f;
+
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+
+  --shadow-main: 0 30px 80px rgba(0, 0, 0, 0.6);
+  --blur: blur(18px);
+  --transition: 0.2s ease;
+}
