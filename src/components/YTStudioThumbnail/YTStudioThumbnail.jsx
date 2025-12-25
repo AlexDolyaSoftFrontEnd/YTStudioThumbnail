@@ -22,9 +22,6 @@ export default function VideoEditor() {
     return () => videoUrl && URL.revokeObjectURL(videoUrl);
   }, [videoUrl]);
 
-  /* ===============================
-     Canvas render loop
-  =============================== */
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
@@ -152,7 +149,6 @@ export default function VideoEditor() {
           className="editor-canvas"
         />
 
-        {/* Hidden source video (NO UI DUPLICATION) */}
         <video
           ref={videoRef}
           src={videoUrl || undefined}
@@ -164,4 +160,5 @@ export default function VideoEditor() {
     </div>
   );
 }
+
 
